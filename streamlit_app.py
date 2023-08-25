@@ -44,6 +44,13 @@ streamlit.header("The FRUIT_LOAD_LIST contains:")
 streamlit.dataframe(my_data_rows)
 fruit_add = streamlit.text_input('What fruit would you like add')
 
-if fruit_add and fruit_add.strip():            
+if fruit_add and fruit_add.strip():
+            my_cur.excute("select count(*) from fruit_load_list where FRUIT_NAME="+fruit_add)
+            count_result = my_cur.fetchone()
+
+            if count_result[0] == 0:
             my_cur.execute("insert into fruit_load_list values ('" + fruit_add + "')")
             streamlit.write('Thank you adding fruit ', fruit_add)
+            
+            else:
+            streamlit.warning("Fruit already exists in the table.")
