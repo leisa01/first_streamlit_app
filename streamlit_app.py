@@ -49,8 +49,8 @@ if fruit_add and fruit_add.strip():
             count_result = my_cur.fetchone()
 
             if count_result[0] == 0:
-            my_cur.execute("insert into fruit_load_list values ('" + fruit_add + "')")
-            streamlit.write('Thank you adding fruit ', fruit_add)
+                        my_cur.execute("insert into fruit_load_list values ('" + fruit_add + "')")
+                        streamlit.write('Thank you adding fruit ', fruit_add)
             
             else:
-            streamlit.warning("Fruit already exists in the table.")
+                        streamlit.warning("Fruit already exists in the table.")
